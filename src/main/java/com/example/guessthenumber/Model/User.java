@@ -3,7 +3,7 @@ package com.example.guessthenumber.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "usersattemps")
 public class User {
     public User(String name) {
         this.name = name;
