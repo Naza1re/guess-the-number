@@ -15,4 +15,5 @@ public class DBConnection {
         Session session = sessionFactory.getCurrentSession();
         return session;
     }
+    public static
 }
