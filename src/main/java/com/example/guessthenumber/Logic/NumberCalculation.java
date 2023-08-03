@@ -50,7 +50,7 @@ public class NumberCalculation {
     public static void writeToFile(ArrayList<Integer> a, ArrayList<Integer> b) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("numbers.txt", true))) {
             writer.write(a + "             " + containsNumbers(a, b) + "   " + correctPosition(a, b));
-            writer.newLine(); // Добавление символа новой строки
+            writer.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

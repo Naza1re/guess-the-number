@@ -1,6 +1,9 @@
 package com.example.guessthenumber.Windows;
 
+import com.example.guessthenumber.DBConnection.DBConnection;
 import com.example.guessthenumber.Logic.NumberCalculation;
+import com.example.guessthenumber.Model.User;
+import org.hibernate.Session;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,8 +28,10 @@ public class MainWindow extends Component {
     JLabel correct_POSITION = new JLabel("Правильные позиции");
     JButton exit = new JButton("Выйти");
     private int generateNumber;
+    int score = 0;
 
     MainWindow(){
+
         int a =  NumberCalculation.generateUniqueFourDigitNumber();
         frame.setLayout(null);
         frame.setVisible(true);
@@ -51,6 +56,12 @@ public class MainWindow extends Component {
                 try{
                     int inputNumber = Integer.parseInt(userInput);
                     if(inputNumber==generateNumber){
+                        Session session =  DBConnection.getSession();
+                        session.beginTransaction();
+                        User user = DBConnection.getLastAddedUser();
+                        user.setScore(score);
+                        session.saveOrUpdate(user);
+                        session.getTransaction().commit();
                         JOptionPane.showMessageDialog(frame, "Ты угадал это было число : "+inputNumber);
                         NumberCalculation.clearFile();
                         System.exit(1);
@@ -60,8 +71,7 @@ public class MainWindow extends Component {
                         ArrayList b =  NumberCalculation.returnCollection(generateNumber);
                         NumberCalculation.writeToFile(a,b);
                         loadFromFile();
-
-
+                        score++;
 
                     }
 

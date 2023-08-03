@@ -13,15 +13,6 @@ public class GuessTheNumberStart {
                 .buildSessionFactory();
 
         try {
-            Session session = factory.getCurrentSession();
-
-            session.beginTransaction();
-
-
-            User user = new User("nikita");
-            session.save(user);
-            session.getTransaction().commit();
-            System.out.println(user);
 
         }
         finally {
