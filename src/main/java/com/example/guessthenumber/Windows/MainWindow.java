@@ -31,7 +31,8 @@ public class MainWindow extends Component {
     int score = 0;
 
     MainWindow(){
-
+        NumberCalculation.clearFile();
+        area.setText(" ");
         int a =  NumberCalculation.generateUniqueFourDigitNumber();
         frame.setLayout(null);
         frame.setVisible(true);
@@ -62,9 +63,9 @@ public class MainWindow extends Component {
                         user.setScore(score);
                         session.saveOrUpdate(user);
                         session.getTransaction().commit();
-                        JOptionPane.showMessageDialog(frame, "Ты угадал это было число : "+inputNumber);
                         NumberCalculation.clearFile();
-                        System.exit(1);
+                        frame.setVisible(false);
+                        new WinTable();
                     }
                     else{
                         ArrayList a =  NumberCalculation.returnCollection(inputNumber);

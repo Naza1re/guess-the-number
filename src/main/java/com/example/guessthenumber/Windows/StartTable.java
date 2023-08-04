@@ -15,7 +15,7 @@ public class StartTable implements ActionListener {
     JTextField textField = new JTextField();
     JButton button = new JButton("Начать игру");
 
-        StartTable(){
+        public StartTable(){
             frame.setVisible(true);
             frame.setLayout(null);
             frame.setExtendedState(Frame.MAXIMIZED_BOTH);

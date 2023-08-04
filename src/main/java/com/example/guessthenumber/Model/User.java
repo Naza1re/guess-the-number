@@ -23,6 +23,14 @@ public class User {
     private int score;
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
